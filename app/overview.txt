@@ -1,0 +1,15 @@
+Funcionalidades
+  Welcome index page, com a relação dos Pets cadastrados;
+  
+
+Problemas:
+  Não foram realizadosos todos os testes de controllers, models e views;
+  Paginação está falhando na view prontuários;
+
+Melhorias:
+  Em uma versão posterior eu implementaria:
+    * indexão de Pets por tipo;
+    * filtro de Prontuários por data;
+    * pesquisa de Pets e/ou Prontuário por nome;
+  
+

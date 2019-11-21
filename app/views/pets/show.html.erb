@@ -1,0 +1,49 @@
+  <% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<div class="clearfix"></div>
+  <div class="col-md-12 col-sm-12  ">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Listing PETS<small>Listing All Registered Pets </small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><%= link_to 'New Prontuário', edit_pet_path(@pet) %></li>
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+            <%#= @pets.human_attribute_name %>
+              <th><%#= @pet.human_attribute_name("id") %></th>
+              <th><%#= @pet.human_attribute_name("name") %></th>
+              <th><%#= @pet.human_attribute_name("birthdate") %></th>
+              <th><%#= @pet.human_attribute_name("breed") %></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td><%= @pet.id %></td>
+                <th><%= @pet.name %></th>
+                <td><%= @pet.birthdate %></td>
+                <td><%= @pet.breed %></td>
+                <% @pet.medical_records.each do |mrecord|%>
+                <td><%= mrecord.id %></td>
+                <% end %>
+
+                <td><%= link_to "Prontuários", medical_records_path(@pet.medical_records) %></td>
+                <td><%#= link_to "Edit", edit_pet_path(pet) %></td>
+                <td><%#= link_to "Delete", pet, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+              </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>

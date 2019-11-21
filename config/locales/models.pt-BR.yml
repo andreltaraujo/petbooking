@@ -1,0 +1,22 @@
+'pt-BR':
+  activerecord:
+    models:
+      pet:
+        one: Pet
+        other: Pets
+      medical_record:
+        one: Prontuário
+        other: Prontuários
+      kind:
+        one: Tipo
+        other: Tipos
+    attributes:
+      pet:
+        name: Nome
+        birthdate: Data de Nascimento
+        breed: Raça
+      medical_record:
+        patient_symptoms: Sintomas
+        applied_treatment: Tratamento Aplicado
+      kind:
+        description: Descrição

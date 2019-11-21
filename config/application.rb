@@ -24,7 +24,9 @@ module Petbooking
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-
+    # I18n Config
+    config.i18n.available_locales = [:'pt-BR', :en]
+    config.i18n.default_locale = :'pt-BR'
     # Don't generate system test files.
     config.generators.system_tests = nil
 

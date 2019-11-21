@@ -1,5 +1,17 @@
 {
   "name": "petbooking",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "fastclick": "^1.0.6",
+    "font-awesome": "4.6.3",
+    "icheck": "^1.0.2",
+    "jquery": "2.2.4",
+    "nprogress": "^0.2.0"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/andreltaraujo/petbooking.git",
+  "author": "André Araujo <andreguia@hotmail.com>",
+  "license": "MIT"
 }

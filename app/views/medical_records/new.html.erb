@@ -1,5 +1,5 @@
-<% if @pet.errors.any? %>
-  <% @pet.errors.full_messages.each do |message| %>
+<% if @mrecord.errors.any? %>
+  <% @mrecord.errors.full_messages.each do |message| %>
   <ul>
     <li><%= message %></li>
   </ul>
@@ -11,7 +11,7 @@
   <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Pet Registering:<small>register your pet here</small></h2>
+        <h2>Prontuário Registering:<small>Novo Prontuário</small></h2>
         <ul class="nav navbar-right panel_toolbox">
           <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
           </li>
@@ -20,30 +20,24 @@
       </div>
       <div class="x_content">
         <br />
-        <%= form_for @pet, html: { class:"form-horizontal form-label-left"} do |f| %>
-          <div class="item form-group">
-            <%= f.label :kind_id, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+        <%= form_for @mrecord do |f| %>
+        <div class="item form-group">
+            <%= f.label :pet_id, class:"col-form-label col-md-3 col-sm-3 label-align" %>
             <div class="col-md-6 col-sm-6 ">
-            <%= collection_select(:pet, :kind_id, @kind_options, :id, :description, options = {}, html_options = { class:"form-control" })%>
+            <%= f.text_field :pet_name, class:"form-control" %>
+            </div>
+          </div>
+          <div class="item form-group">
+            <%= f.label :patient_symptoms, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+            <div class="col-md-6 col-sm-6 ">
+            <%= f.text_field :patient_symptoms, class:"form-control" %>
             </div>
           </div>
           
           <div class="item form-group">
-            <%= f.label :name, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+            <%= f.label :applied_treatment, class:"col-form-label col-md-3 col-sm-3 label-align" %>
             <div class="col-md-6 col-sm-6 ">
-              <%= f.text_field :name, class:"form-control" %>
-            </div>
-          </div>
-          <div class="item form-group">
-            <%= f.label :birthdate, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-            <div class="col-md-6 col-sm-6 ">
-              <%= f.date_field :birthdate, class:"form-control" %>
-            </div>
-          </div>
-          <div class="item form-group">
-            <%= f.label :breed, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-            <div class="col-md-6 col-sm-6 ">
-              <%= f.text_field :breed, class:"form-control" %>
+              <%= f.text_field :applied_treatment, class:"form-control" %>
             </div>
           </div>
           

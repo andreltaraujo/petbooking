@@ -11,5 +11,10 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require_tree .
+//= require jquery/dist/jquery.min
+//= require bootstrap/dist/js/bootstrap.bundle.min
+//= require fastclick/lib/fastclick
+//= require nprogress/nprogress
+//= require icheck/icheck.min
+//= require custom.min
