@@ -1,10 +1,15 @@
-Funcionalidades
-  Welcome index page, com a relação dos Pets cadastrados;
-  
-
+Funcionalidades implementadas: 
+  Lista os PETS do site;
+  Mostra um PET;
+  Edita PET;
+  Deleta PET;
+  Lista os Prontuários do site;
+  Lista Prontuários do PET;
+  Cria/Cadastra PETS;
+  Cria/Cadastra/Gerencia Prontuários.  
+  Seleciona pet por tipo
 Problemas:
   Não foram realizadosos todos os testes de controllers, models e views;
-  Paginação está falhando na view prontuários;
 
 Melhorias:
   Em uma versão posterior eu implementaria:

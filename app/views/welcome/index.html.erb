@@ -3,13 +3,12 @@
 <% end %>
 
 <div class="clearfix"></div>
-
   <div class="col-md-12 col-sm-12  ">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Listing PETS<small>Listing All Registered Pets </small></h2>
+        <h2><%= t('headers.registered', model: @pets.model_name.human(count: 2)) %></h2>
         <ul class="nav navbar-right panel_toolbox">
-          <li><%= link_to 'New Pet', new_pet_path %></li>
+          <li><%= link_to t('links.New', model: @pets.model_name.human), new_pet_path %></li>
           <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
           </li>
         </ul>
@@ -20,7 +19,7 @@
           <thead>
             <tr>
               <th><%= @pets.human_attribute_name("id") %></th>
-              <th><%= @pets.human_attribute_name("kind") %></th>
+              <th>Tipo</th>
               <th><%= @pets.human_attribute_name("name") %></th>
               <th><%= @pets.human_attribute_name("birthdate") %></th>
               <th><%= @pets.human_attribute_name("breed") %></th>
@@ -35,11 +34,11 @@
                 <td><%= pet.id %></td>
                 <th><%= pet.kind.description %></th>
                 <td><%= pet.name %></td>
-                <td><%= pet.birthdate %></td>
+                <td><%= l pet.birthdate %></td>
                 <td><%= pet.breed %></td>
-                <td><%= link_to "Show", pet_path(pet) %></td>
-                <td><%= link_to "Edit", edit_pet_path(pet) %></td>
-                <td><%= link_to "Delete", pet, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                <td><%= link_to t('links.Show'), pet_path(pet) %></td>
+                <td><%= link_to t('links.Edit'), edit_pet_path(pet) %></td>
+                <td><%= link_to t('links.Delete'), pet_path(pet), method: :delete, data: {confirm: 'Are you sure?'} %></td>
               </tr>
             <% end %>
           </tbody>

@@ -38,10 +38,9 @@
                 <td><%#= link_to "Delete", pet, method: :delete, data: {confirm: 'Are you sure?'} %></td>
               </tr>
             <% end %>
-            <%= paginate @mrecords %>
           </tbody>
         </table>
-        
+        <%= paginate @mrecords %>
       </div>
     </div>
   </div>

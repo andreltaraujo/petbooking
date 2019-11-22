@@ -12,11 +12,14 @@
         other: Tipos
     attributes:
       pet:
+        id: Código
         name: Nome
         birthdate: Data de Nascimento
         breed: Raça
       medical_record:
+        id: Código
         patient_symptoms: Sintomas
         applied_treatment: Tratamento Aplicado
       kind:
+        id: Código
         description: Descrição

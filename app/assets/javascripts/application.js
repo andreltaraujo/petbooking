@@ -18,3 +18,4 @@
 //= require nprogress/nprogress
 //= require icheck/icheck.min
 //= require custom.min
+//= require cocoon

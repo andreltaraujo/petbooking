@@ -49,7 +49,7 @@ namespace :dev do
 
       desc "Cadastra os Prontuários"
         task add_medical_records: :environment do
-          10.times do |c|
+          100.times do |m|
             MedicalRecord.create!(
               patient_symptoms: Faker::Lorem.words,
               applied_treatment: Faker::Lorem.sentence,

@@ -42,9 +42,8 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'selenium-webdriver'
-  gem 'webdrivers', '~> 4.0'
   gem 'tty-spinner'
+  gem 'cocoon'
 
 end
 

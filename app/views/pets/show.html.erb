@@ -1,49 +1,85 @@
-  <% if flash[:notice] %>
+<% if flash[:notice] %>
   <p><%= flash[:notice] %></p>
 <% end %>
 
-<div class="clearfix"></div>
-  <div class="col-md-12 col-sm-12  ">
-    <div class="x_panel">
-      <div class="x_title">
-        <h2>Listing PETS<small>Listing All Registered Pets </small></h2>
-        <ul class="nav navbar-right panel_toolbox">
-          <li><%= link_to 'New Prontuário', edit_pet_path(@pet) %></li>
-          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-          </li>
-        </ul>
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-            <%#= @pets.human_attribute_name %>
-              <th><%#= @pet.human_attribute_name("id") %></th>
-              <th><%#= @pet.human_attribute_name("name") %></th>
-              <th><%#= @pet.human_attribute_name("birthdate") %></th>
-              <th><%#= @pet.human_attribute_name("breed") %></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-              <tr>
-                <td><%= @pet.id %></td>
-                <th><%= @pet.name %></th>
-                <td><%= @pet.birthdate %></td>
-                <td><%= @pet.breed %></td>
-                <% @pet.medical_records.each do |mrecord|%>
-                <td><%= mrecord.id %></td>
-                <% end %>
+      <div class="clearfix"></div>
+        <div class="col-md-12 col-sm-12  ">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2><%= @pet.model_name.human %>: <%= @pet.name %></h2>
+              <ul class="nav navbar-right panel_toolbox">
+                <li><%= link_to t('links.Home'), welcome_index_path %></li>
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th><%= translate_method(@pets, :id) %></th>
+                    <th><%= translate_method(@pets, :name) %></th>
+                    <th>Tipo</th>
+                    <th><%= translate_method(@pets, :birthdate) %></th>
+                    <th><%= translate_method(@pets, :breed) %></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><%= @pet.id %></td>
+                    <th><%= @pet.name %></th>
+                    <td><%= @pet.kind.description %></td>
+                    <td><%= l @pet.birthdate %></td>
+                    <td><%= @pet.breed %></td>
+                    <td><%= link_to t('links.Edit'), edit_pet_path(@pet) %></td>
+                    <td><%= link_to t('links.Delete'), pet_path(@pet), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                  </tr>
+                </tbody>
+              </table>
 
-                <td><%= link_to "Prontuários", medical_records_path(@pet.medical_records) %></td>
-                <td><%#= link_to "Edit", edit_pet_path(pet) %></td>
-                <td><%#= link_to "Delete", pet, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-              </tr>
-          </tbody>
-        </table>
-
+              <div class="col-md-12 col-sm-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2><%= @pet.name %><small><%= @pet.medical_records.model_name.human(count: 2) %></small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><%= link_to t('links.Manage', model: @pet.medical_records.model_name.human(count: 2)), edit_pet_path(@pet) %></li>
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th><%= translate_method(@pets, :id) %></th>
+                    <th><%= translate_method(@pet.medical_records, :patient_symptoms) %></th>
+                    <th><%= translate_method(@pet.medical_records, :applied_treatment) %></th>
+                    <th>Data do Prontuário</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @pet.medical_records.each do |mrec|%>
+                    <tr>
+                      <td><%= mrec.id %></td>
+                      <th><%= mrec.patient_symptoms %></th>
+                      <td><%= mrec.applied_treatment %></td>
+                      <td><%= l @pet.birthdate %></td>
+                      <td><%= link_to t('links.Edit'), edit_pet_path(@pet) %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>

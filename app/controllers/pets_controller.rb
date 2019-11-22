@@ -1,8 +1,9 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
+  before_action :get_pets, only: [:show]
 
   def index
-    @pets = Pet.all
+    @pets = Pet.all.page(params[:page]).per(10)
   end
   
   def new
@@ -13,7 +14,7 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     if @pet.save
-      redirect_to welcome_index_path, notice: 'Pet successfuly created!'
+      redirect_to pet_path(@pet), notice: 'Pet successfuly created!'
     else
       render :new
     end
@@ -33,9 +34,10 @@ class PetsController < ApplicationController
       render :edit
     end
   end
+  
   def destroy
     if @pet.destroy
-      redirect_to pets_path, notice: 'Pet successfuly deleted!'
+      redirect_to pet_path, notice: 'Pet successfuly deleted!'
     else
       render :index
     end
@@ -44,10 +46,15 @@ class PetsController < ApplicationController
   private
 
   def pet_params
-    params.require(:pet).permit(:id, :name, :birthdate, :breed, :kind_id)
+    params.require(:pet).permit(:id, :name, :birthdate, :breed, :kind_id,
+    medical_records_attributes:[:id, :patient_symptoms, :applied_treatment, :done, :_destroy])
   end
 
   def set_pet
     @pet = Pet.find(params[:id])
+  end
+
+  def get_pets
+    @pets = Pet.all
   end
 end

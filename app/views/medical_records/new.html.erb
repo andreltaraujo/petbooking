@@ -11,7 +11,7 @@
   <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Prontuário Registering:<small>Novo Prontuário</small></h2>
+        <h2><%= @mrecord.model_name.human(count: 2) %> Registering:<small>Novo <%= @mrecord.model_name.human %></small></h2>
         <ul class="nav navbar-right panel_toolbox">
           <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
           </li>
@@ -24,7 +24,7 @@
         <div class="item form-group">
             <%= f.label :pet_id, class:"col-form-label col-md-3 col-sm-3 label-align" %>
             <div class="col-md-6 col-sm-6 ">
-            <%= f.text_field :pet_name, class:"form-control" %>
+            <%= f.text_field :pet_id class:"form-control" %>
             </div>
           </div>
           <div class="item form-group">
@@ -45,8 +45,7 @@
           <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-3">
               <button class="btn btn-primary" type="button">Cancel</button>
-              <button class="btn btn-primary" type="reset">Reset</button>
-              <button type="submit" class="btn btn-success">Submit</button>
+              <button type="submit" class="btn btn-success"><% t('links.Submit') %></button>
             </div>
           </div>
         <% end %>

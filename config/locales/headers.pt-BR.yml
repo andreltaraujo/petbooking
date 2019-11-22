@@ -1,0 +1,6 @@
+'pt-BR': 
+  headers:
+    registered: "%{model} Cadastrados"
+    editing: Editando
+    registering: Cadastrando
+    welcome: Bem-vindo

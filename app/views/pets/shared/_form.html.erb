@@ -1,0 +1,73 @@
+<% if @pet.errors.any? %>
+  <% @pet.errors.full_messages.each do |message| %>
+  <ul>
+    <li><%= message %></li>
+  </ul>
+  <% end %>
+<% end %>
+
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2><%= "#{action_message}" %> <%= @pet.model_name.human %></h1></h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <br />
+        <%= form_with(model: @pet, local: true) do |form| %>
+          <div class="item form-group">
+            <%= form.label :kind_id, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+            <div class="col-md-6 col-sm-6 ">
+              <%= form.collection_select(:kind_id, @kind_options, :id, :description, 
+              {}, {class:"form-control"} )%>
+            </div>
+          </div>
+
+          <div class="item form-group">
+            <%= form.label :name, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+            <div class="col-md-6 col-sm-6 ">
+            <%= form.text_field :name, class:"form-control" %>
+            </div>
+          </div>
+          
+          <div class="item form-group">
+            <%= form.label :birthdate, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+            <div class="col-md-6 col-sm-6 ">
+              <%= form.date_field :birthdate, class:"form-control" %>
+            </div>
+          </div>
+
+          <div class="item form-group">
+            <%= form.label :breed, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+            <div class="col-md-6 col-sm-6 ">
+              <%= form.text_field :breed, class:"form-control" %>
+            </div>
+          </div>
+          
+          <div id="medical_records">
+            <%= form.fields_for :medical_records do |medical_record| %>
+              <%= render partial: "medical_record_fields", locals: { f: medical_record } %>
+            <% end %>
+            <div class="col-md-6 col-sm-6 offset-md-3">
+              <%= link_to_add_association 'Add Prontuário', form, :medical_records,
+               class:"btn btn-outline-success btn-sm" %>
+            </div><br />
+          </div>
+          <div class="ln_solid"></div>
+          <div class="item form-group">
+            <div class="col-md-6 col-sm-6 offset-md-3">
+              <td><%= link_to t('links.Cancel'), welcome_index_path, class:"btn btn-primary" %></td>
+              <%= form.submit t('links.Submit'), class:"btn btn-success" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

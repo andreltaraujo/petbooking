@@ -1,0 +1,11 @@
+'pt-BR':
+  links:
+    Home: Início
+    Cancel: Cancelar
+    Submit: Salvar
+    Search: Pesquisar
+    Show: Mostrar
+    Edit: Editar
+    Delete: Excluir
+    New: "Cadastrar %{model}"
+    Manage: "Gerenciar %{model}"

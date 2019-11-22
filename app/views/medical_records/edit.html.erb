@@ -1,0 +1,57 @@
+<% if @pet.errors.any? %>
+  <% @pet.errors.full_messages.each do |message| %>
+  <ul>
+    <li><%= message %></li>
+  </ul>
+  <% end %>
+<% end %>
+
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Prontuário Registering:<small>Novo Prontuário</small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <br />
+        <%= form_with(url: welcome_path, model: @pet, local: true) do |form| %>
+        <div class="item form-group">
+            <%= form.label :name, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+            <div class="col-md-6 col-sm-6 ">
+            <%= form.text_field :name, class:"form-control" %>
+            </div>
+          </div>
+            <%= form.fields_for :medical_records do |medical_records| %>
+              <div class="item form-group">
+                <%= medical_records.label :patient_symptoms, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                <div class="col-md-6 col-sm-6 ">
+                <%= medical_records.text_field :patient_symptoms, class:"form-control" %>
+                </div>
+              </div>
+              
+              <div class="item form-group">
+                <%= medical_records.label :applied_treatment, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                <div class="col-md-6 col-sm-6 ">
+                  <%= medical_records.text_field :applied_treatment, class:"form-control" %>
+                </div>
+              </div>
+            <% end %>
+          <div class="ln_solid"></div>
+          <div class="item form-group">
+            <div class="col-md-6 col-sm-6 offset-md-3">
+              <td><%= link_to t('links.Cancel'), "#" %></td>
+              <button class="btn btn-primary" type="reset">Reset</button>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
